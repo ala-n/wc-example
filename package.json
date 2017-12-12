@@ -1,0 +1,23 @@
+{
+  "name": "wcaudiodemo",
+  "version": "1.0.0",
+  "description": "This is a demo project of wc v1 usage on audio component cusomization.",
+  "main": "app.js",
+  "scripts": {
+    "rundev": "node ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webcomonentsv1",
+    "audio",
+    "cusomcomponent"
+  ],
+  "author": "Alexey Stsefanovich (ala'n)",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13"
+  }
+}
