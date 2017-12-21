@@ -1,13 +1,16 @@
 
 const template = document.createElement('template');
+// Template for our custom element
+// language=HTML
 template.innerHTML = `
 	<style>
 		:host {
 			display: block;
 			text-align: center;
 			
-			/* Custom properties */
+			/* Custom properties, we can easily override it outside */
 			--bg-color: #1b1b1b;
+			/*--bg-color: var(--custom-audio-bg-color, #1b1b1b);*/
 			--primary-color: #8100ff;
 			--active-color: #00ff38;
 			--secondary-color: #393939;
@@ -103,6 +106,19 @@ template.innerHTML = `
 	</div>
 `;
 
+
+const audioCmpIntersectionObserver = new IntersectionObserver((entries) => {
+	for (let entree of entries) {
+		if (entree.target instanceof WCAudio && !entree.isIntersecting) {
+			entree.target.stop();
+		}
+	}
+}, {
+	// Options
+	rootMargin: '1000px',
+	threshold: 0.0
+});
+
 class WCAudio extends HTMLElement {
 
 	static get observedAttributes(){ return ['src', 'volume']; }
@@ -167,11 +183,18 @@ class WCAudio extends HTMLElement {
 	connectedCallback() {
 		this._audio.volume = +(this.volume || 1);
 		this._audio.src = this.src;
+
 		this.update();
+
+		if( this.hasAttribute('stop-out-of-view') ) {
+			audioCmpIntersectionObserver.observe(this);
+		}
 	}
 
 	disconnectedCallback() {
 		this._removeTrackListener();
+
+		audioCmpIntersectionObserver.unobserve(this);
 	}
 
 	attributeChangedCallback(attr, oldValue, newValue) {
