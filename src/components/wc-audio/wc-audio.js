@@ -104,6 +104,9 @@ template.innerHTML = `
 			</svg>
 		</button>
 	</div>
+	<div id="player-text">
+		<slot></slot>
+	</div>
 `;
 
 

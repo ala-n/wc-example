@@ -9,34 +9,22 @@
 	<script async src="components/wc-audio/wc-audio.js"></script>
 
 	<style>
-		#test-table tbody > tr {
-			height: 150vh;
+		body {
+			background: #292929;
+			color: white;
 		}
 	</style>
 </head>
 <body>
  <main>
-	 <div class="row">
-		 <div class="col-sm-12">
-			 <table id="test-table" class="table table-dark">
-				 <thead>
-				 <tr>
-					 <th scope="col" width="20%">Player</th>
-					 <th scope="col" width="80%">Track</th>
-				 </tr>
-				 </thead>
-				 <tbody>
-				 <tr>
-					 <td> <wc-audio volume="0.1" src="resource\audio\01_acdc_rocknrolltrain.mp3" stop-out-of-view></wc-audio> </td>
-					 <td> AC/DC - Rock N' Roll Train</td>
-				 </tr>
-				 <tr>
-					 <td> <wc-audio volume="0.1" src="resource\audio\02_acdc_tnt.mp3"></wc-audio> </td>
-					 <td> AC/DC - TNT </td>
-				 </tr>
-				 </tbody>
-			 </table>
+	 <div class="row justify-content-md-center">
+		 <div class="col-md-2 col-xl-1">
+			 <wc-audio volume="0.1" src="resource\audio\01_acdc_rocknrolltrain.mp3">AC/DC - Rock N' Roll Train
+			 </wc-audio>
 		 </div>
+		 <dix class="col-md-2 col-xl-1">
+			 <wc-audio volume="0.1" src="resource\audio\02_acdc_tnt.mp3">AC/DC - TNT</wc-audio>
+		 </dix>
 	 </div>
  </main>
 </body>
